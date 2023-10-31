@@ -489,6 +489,9 @@ label .check:checked+div:before {
 /* start tasks  */
 .tasks .row {
     padding: 15px 0;
+    cursor: pointer;
+    transition:transform 1s  ;
+    transition:   opacity .3s  ;
 }
 
 .tasks .row:not(:last-of-type) {
@@ -499,8 +502,16 @@ label .check:checked+div:before {
     padding-bottom: 0;
 }
 
-.tasks .row:nth-of-type(4) {
+.tasks .row.active {
     opacity: .3;
+}
+.tasks .row.del {
+    transform: translateX(-1000px);
+    transition: 1s;
+}
+.tasks .row.active h3 ,.tasks .row.active p{
+    text-decoration: line-through;
+    transition: .3s;
 }
 
 .tasks .row i {
@@ -557,8 +568,14 @@ label .check:checked+div:before {
     outline: 2px solid var(--blue-color);
     margin-right: 10px;
     position: relative;
+    cursor: pointer;
 }
-
+.progress .row span:first-of-type.active{
+    background-color: var(--blue-color) !important;
+}
+.progress .row span:first-of-type.last{
+    animation: flash .8s infinite alternate !important;
+}
 .progress .row:last-of-type span:first-of-type {
     background-color: white;
 }
